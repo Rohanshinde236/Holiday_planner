@@ -1,0 +1,84 @@
+/* Design tokens — all colours/spacing live here (no hardcoded hex in components). */
+:root {
+  --color-bg: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-border: #e3e6ef;
+  --color-text: #1c2433;
+  --color-text-secondary: #5b6577;
+  --color-primary: #3a5bd9;
+  --color-primary-weak: #eef2ff;
+  --color-green: #1f9d57;
+  --color-amber: #d68a0c;
+  --color-red: #d23b3b;
+  --color-voice: #3a5bd9;
+  --color-chat: #1f9d57;
+  --color-email: #8a4fd6;
+
+  --radius: 10px;
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px;
+  --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.app-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.app-header h1 { font-size: 18px; margin: 0; }
+.app-header .sub { color: var(--color-text-secondary); font-size: 13px; }
+
+.tabs { display: flex; gap: 2px; flex-wrap: wrap; padding: 0 var(--sp-6); background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
+.tab { padding: 10px 14px; border: none; background: none; cursor: pointer; font-size: 13px; color: var(--color-text-secondary); border-bottom: 2px solid transparent; }
+.tab.active { color: var(--color-primary); border-bottom-color: var(--color-primary); font-weight: 600; }
+.tab:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.content { padding: var(--sp-6); max-width: 1100px; margin: 0 auto; }
+.card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--sp-6); margin-bottom: var(--sp-6); }
+.card h2 { margin: 0 0 var(--sp-2); font-size: 16px; }
+.card p.hint { margin: 0 0 var(--sp-4); color: var(--color-text-secondary); font-size: 13px; }
+
+label { display: block; font-size: 12px; color: var(--color-text-secondary); margin-bottom: var(--sp-1); }
+.req::after { content: " *"; color: var(--color-red); font-weight: 700; }
+input[type="number"], input[type="text"], input[type="time"], select {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--color-border);
+  border-radius: 8px; font-size: 14px; font-family: var(--font-mono); background: var(--color-surface);
+}
+.grid { display: grid; gap: var(--sp-4); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.field { margin-bottom: var(--sp-3); }
+
+button.primary { background: var(--color-primary); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-ghost { background: var(--color-primary-weak); color: var(--color-primary); border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--color-border); }
+th { color: var(--color-text-secondary); font-weight: 600; }
+td.num, th.num { text-align: right; font-family: var(--font-mono); }
+tr.reco { background: var(--color-primary-weak); font-weight: 600; }
+
+.pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.pill.green { background: #e6f6ee; color: var(--color-green); }
+.pill.amber { background: #fcf2dd; color: var(--color-amber); }
+.pill.red { background: #fbe7e7; color: var(--color-red); }
+
+.kpi { display: flex; gap: var(--sp-6); flex-wrap: wrap; }
+.kpi .item { background: var(--color-primary-weak); border-radius: var(--radius); padding: var(--sp-4) var(--sp-6); }
+.kpi .item .v { font-size: 26px; font-weight: 700; font-family: var(--font-mono); }
+.kpi .item .l { font-size: 12px; color: var(--color-text-secondary); }
+.banner { padding: var(--sp-3) var(--sp-4); border-radius: 8px; font-size: 13px; margin-bottom: var(--sp-4); }
+.banner.info { background: var(--color-primary-weak); color: var(--color-primary); }
+.chart-wrap { position: relative; height: 320px; }
+.table-scroll { max-height: 420px; overflow: auto; }

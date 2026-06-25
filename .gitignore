@@ -1,0 +1,24 @@
+# Secrets — NEVER commit
+.env
+**/.env
+*.key
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Node / frontend
+node_modules/
+**/node_modules/
+dist/
+frontend/dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
