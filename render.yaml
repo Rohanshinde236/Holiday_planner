@@ -1,0 +1,19 @@
+# Render Blueprint — one-click deploy of the full app (FastAPI serving the React build).
+# In Render: New + → Blueprint → connect this repo → it reads this file.
+services:
+  - type: web
+    name: holiday-planner
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # LLM is OPTIONAL — the app works fully without it (no AI explain/review).
+      # To enable AI, add your Groq keys here in the Render dashboard (do NOT commit them).
+      - key: GROQ_API_KEY_1
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.1-8b-instant
+      - key: GROQ_MODEL_CHAT
+        value: llama-3.3-70b-versatile

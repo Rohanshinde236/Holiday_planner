@@ -205,3 +205,15 @@ def api_shift_optimise(body: ShiftOptimiseIn):
         reqs, shifts, body.available_agents,
         body.operating_start, body.operating_end, body.interval_minutes,
     )
+
+
+# ── Serve the built React frontend (production) ──────────────────────────────
+# When a built frontend exists at backend/static, mount it at "/" so the whole app
+# is one service on one URL. Mounted LAST so all /api and /health routes win first.
+# In local dev this folder doesn't exist; the Vite dev server serves the UI instead.
+import os
+from fastapi.staticfiles import StaticFiles
+
+_STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
+if os.path.isdir(_STATIC_DIR):
+    app.mount("/", StaticFiles(directory=_STATIC_DIR, html=True), name="frontend")

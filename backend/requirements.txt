@@ -1,14 +1,15 @@
 # WFM Holiday Planner — backend dependencies
-# Phase 1 (engine + tests)
 numpy>=1.24
-pytest>=7.4
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pydantic>=2.6
+ortools>=9.8          # ILP shift optimiser
+holidays>=0.45        # holiday calendar
+openpyxl>=3.1         # Excel export
+reportlab>=4.0        # PDF export
+matplotlib>=3.8       # chart rendering for PDF/Excel
+pillow>=10.0          # image embedding (Excel)
+httpx>=0.27           # LLM client (OpenAI-compatible / Groq)
 
-# Phase 2+ (added as those phases are built)
-# fastapi>=0.110
-# uvicorn[standard]>=0.27
-# pydantic>=2.6
-# ortools>=9.8          # ILP shift optimiser
-# holidays>=0.45        # holiday calendar
-# openpyxl>=3.1         # Excel export
-# reportlab>=4.0        # PDF export
-# openai>=1.0           # OpenAI-compatible client (Grok / Gemini / NVIDIA)
+# dev/test
+pytest>=7.4
